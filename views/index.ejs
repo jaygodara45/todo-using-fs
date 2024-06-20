@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Todo App</title>
+  </head>
+  <body>
+    <div class="main w-full h-auto font-mono">
+      <div
+        class="form p-5 text-black h-auto m-5 rounded-lg shadow-inner border-2 border-gray-200"
+      >
+        <h1 class="mb-5 text-blue-900 text-2xl font-bold">Create a task</h1>
+        <form class="flex flex-col" action="/create" method="post">
+          <input
+            class="px-5 py-3 w-full rounded-lg outline-none border-2 border-gray-100 text-blue-900 font-medium"
+            type="text"
+            placeholder="Title"
+            name="title"
+          />
+          <textarea
+            class="resize-none mt-3 w-full px-5 py-3 rounded-lg outline-none border-2 border-gray-100 text-blue-900"
+            placeholder="Task details"
+            name="details"
+          ></textarea>
+          <input
+            type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg w-72 mt-5 px-3 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            value="Create task"
+          />
+        </form>
+      </div>
+      <div
+        class="tasks p-5 text-black h-auto m-5 flex flex-row flex-wrap gap-5"
+      >
+        <% if(files.length>0){%> <% files.forEach(function(val){%>
+
+        <div
+          class="task min-w-72 h-24 px-3 py-4 rounded-md border-2 border-gray-200 mb-5"
+        >
+          <h1 class="text-blue-800 tracking-tighter text-lg font-semibold">
+            <%= val.split('_').join(' ').slice(0, -4) %>
+          </h1>
+          <div class="flex gap-5 flex-row w-full">
+            <a class="text-gray-600 hover:text-gray-400" href="/file/<%= val %>"
+              >Details</a
+            >
+            <a class="text-gray-600 hover:text-gray-400" href="/edit/<%= val %>"
+              >Edit</a
+            >
+          </div>
+        </div>
+        <%}) %> <%} else{%>
+        <h1 class="text-blue-900 text-2xl font-semibold">No tasks yet</h1>
+
+        <%} %>
+      </div>
+    </div>
+  </body>
+</html>

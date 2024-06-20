@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Todo App</title>
+  </head>
+  <body>
+    <div class="main w-full h-auto font-mono p-10">
+      <a class="text-blue-400 inline-block mb-5" href="/">Back to home</a>
+      <div
+        class="h-auto w-[100%] border-2 border-blue-200 px-2 py-5 rounded-md shadow-inner"
+      >
+        <h1 class="text-3xl tracking-tighter text-blue-900 font-semibold">
+          <%= filename.split('_').join(' ').slice(0, -4) %>
+        </h1>
+        <p class="text-xl mt-2 font-light text-blue-900"><%= filedata %></p>
+      </div>
+    </div>
+  </body>
+</html>
